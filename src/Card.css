@@ -1,18 +1,33 @@
 #root {
   max-width: 400px;
-  
-  margin: 0 auto;
-  padding: 2rem;
+  padding: 2em;
+  margin: 0 auto;  
   text-align: center;
-  border-radius: 20px;
+  
+}
+.Card{
+  min-width: 400px;
+
 }
 
 .okvirSlike{
-  width: 50px;
-  height: 150px;
-  background-color: aqua;
-  
+  min-height: 100px;
+  background-color: aqua; 
 }
-.slika{
-  
+
+
+
+.splosni-podatki{
+  min-height: 250px;
+  background-color: antiquewhite;
+}
+
+.links{
+  min-height: 70px;
+  background-color: aquamarine;
+}
+
+.follow{
+  min-height: 70px;
+  background-color: aqua;
 }

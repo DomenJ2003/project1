@@ -10,17 +10,12 @@ function Card() {
         <img className='slika' src="../public/bg-img.jpg" alt="" />
       </div>
       <div className="splosni-podatki">
-        <h3>Ana Lovefully</h3>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati, quis!</p>
+        
       </div>
       <div className="links">
-        <div className="country">
-          Hungary
-        </div>
-        <div className="mail">
-          Send email
-        </div>
+        
       </div>
+      <div className="follow"></div>
     </div>
   )
 }
