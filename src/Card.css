@@ -1,6 +1,18 @@
 #root {
-  max-width: 1280px;
+  max-width: 400px;
+  
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  border-radius: 20px;
+}
+
+.okvirSlike{
+  width: 50px;
+  height: 150px;
+  background-color: aqua;
+  
+}
+.slika{
+  
 }
