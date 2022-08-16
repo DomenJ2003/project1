@@ -9,10 +9,12 @@ function Card() {
       <div className="okvirSlike">
         <img className='slika' src="../public/bg-img.jpg" alt="" />
       </div>
-      <div className="profil"></div>
+      <div className="profil">
+        <img className='profil-photo' src="../public/profil.jpg" alt="" />
+      </div>
       <div className="splosni-podatki">
         <h3>Ime Primek</h3>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sunt, odio!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro facere quisquam saepe nobis iure error, natus eos dolorem id illum.</p>
       </div>
       <div className="links">
         <a href="#">
@@ -22,8 +24,18 @@ function Card() {
           Email me
         </a>
       </div>
-      <div className="follow">
-        Fo
+      <div className="followers-info">
+        <div className="box">
+          <b>1522</b>
+          <p>Followers</p>
+        </div>
+        <div className="box">
+          <b>15222</b>
+          <p>Following</p>
+        </div>
+      </div>
+      <div className="follow-btn-container">
+        Follow
       </div>
     </div>
   )

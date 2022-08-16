@@ -19,7 +19,7 @@
   border-top-right-radius: 30px;  */
 }
 
-img{
+.slika{
   width: 400px;
   height: 150PX;
   object-fit: cover;
@@ -28,15 +28,21 @@ img{
 }
 
 .profil{
-  height: 100px;
-  width: 100px;
-  border-radius: 100px;
-  background-color: blueviolet;
-  position: absolute;
-  left: calc(50% - 50px);
-  margin-top: -50PX;
-  margin-bottom: 30px;
+  height: 120px;
+  width: 120px;
+  border-radius: 120px;
 
+  position: absolute;
+  left: calc(50% - 60px);
+  margin-top: -60PX;
+}
+
+.profil-photo{
+  height: 120px;
+  width: 120px;
+  border-radius: 120px;
+  object-fit: cover;
+  
 }
 
 
@@ -44,8 +50,8 @@ img{
 
   margin: 0;
   padding: 2rem;
-  min-height: 250px;
-  background-color: antiquewhite;
+  min-height: 120px;
+
 }
 
 h3{
@@ -53,15 +59,46 @@ h3{
 }
 
 .links{
+  padding: 0 50px;
   min-height: 70px;
-  background-color: aquamarine;
+ 
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
 }
 
-.follow{
+.followers-info{
+  min-height: 40px;
+  
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  
+}
+
+.box{
+  
+  width: 50%; 
+  border: 2px solid #121212;
+  margin: 1px;
+}
+p{
+  margin: 5px 0 5px 0;
+  
+}
+
+.follow-btn-container{
   min-height: 70px;
-  background-color: aqua;
+  background-color: #3aad05;
+  color: #fff;
+  font-weight: 600;
+  font-size: larger;
+  border-bottom-left-radius: 30px; 
+  border-bottom-right-radius: 30px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
 }
