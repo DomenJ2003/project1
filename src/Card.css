@@ -4,6 +4,8 @@
 }
 .Card{
   min-width: 400px;
+  border: 1px solid #131313;
+  border-radius: 30px;
 }
 
 .okvirSlike{
