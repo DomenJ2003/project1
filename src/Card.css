@@ -1,7 +1,7 @@
 #root {
   max-width: 400px;
-  padding: 2em;
-  margin: 0 auto;  
+  /* padding: 2em;
+  margin: 0 auto;   */
   text-align: center;
   
 }
@@ -11,20 +11,54 @@
 }
 
 .okvirSlike{
-  min-height: 100px;
-  background-color: aqua; 
+  height: 150PX;
+  /*background-color: aqua;
+  padding: 0;
+  margin: 0; */
+  /* border-top-left-radius: 30px; 
+  border-top-right-radius: 30px;  */
+}
+
+img{
+  width: 400px;
+  height: 150PX;
+  object-fit: cover;
+  border-top-left-radius: 30px; 
+  border-top-right-radius: 30px; 
+}
+
+.profil{
+  height: 100px;
+  width: 100px;
+  border-radius: 100px;
+  background-color: blueviolet;
+  position: absolute;
+  left: calc(50% - 50px);
+  margin-top: -50PX;
+  margin-bottom: 30px;
+
 }
 
 
-
 .splosni-podatki{
+
+  margin: 0;
+  padding: 2rem;
   min-height: 250px;
   background-color: antiquewhite;
+}
+
+h3{
+  padding-top: 20px;
 }
 
 .links{
   min-height: 70px;
   background-color: aquamarine;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .follow{
