@@ -3,26 +3,33 @@ import './Card.css'
 
 function Card(props) {
 
-  const userData={
-    'firstName':'Name',
-    'lastName':'Lastname',
-    'description':'Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro facere quisquam saepe nobis iure error, natus eos dolorem id illum.',
-    'backgroundPhoto': '../public/bg-img.jpg',
-    'profilePhoto': '../public/profil.jpg',
-    'followers': 1234,
-    'following': 512,
-    'location':'Hungary',
-    'email': 'neki@gmail.com'
-  }
-  
+  const[userData, setUserData]= useState({
+    firstName:'Name',
+    lastName:'Lastname',
+    description:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro facere quisquam saepe nobis iure error, natus eos dolorem id illum.',
+    backgroundPhoto: '../public/bg-img.jpg',
+    profilePhoto: '../public/profil.jpg',
+    followers: 1234,
+    following: 512,
+    location:'SI',
+    email: 'neki@gmail.com'
+  });
   //const [followers, setFollowers] = useState(1234)
   //const [firstName, setFirstName] = useState('')
 
+  const setRandomUser = ()=>{
+    var newUser = Object.assign({}, userData);;
+    newUser.firstName = "Ime";
+    console.log(newUser);
+
+    setUserData(newUser);
+  }
+  
   const changeName = event=>{
     //console.log(event.target.value);
     
     setFirstName(()=>document.getElementById('ime-input').value)
-    }
+  }
 
 
   return (
@@ -59,7 +66,7 @@ function Card(props) {
           <p>Following</p>
         </div>
       </div>
-      <button className="follow-btn-container" onClick={()=>setFollowers((followers)=>followers+1)}>
+      <button className="follow-btn-container" onClick={setRandomUser}>
         Follow
       </button>
     </div>
