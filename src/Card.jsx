@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import './Card.css'
+import axios from 'axios';
 
-function Card(props) {
+function Card() {
 
   const[userData, setUserData]= useState({
     firstName:'Name',
@@ -17,12 +18,31 @@ function Card(props) {
   //const [followers, setFollowers] = useState(1234)
   //const [firstName, setFirstName] = useState('')
 
-  const setRandomUser = ()=>{
-    var newUser = Object.assign({}, userData);;
-    newUser.firstName = "Ime";
-    console.log(newUser);
+  function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }
 
-    setUserData(newUser);
+
+  const setRandomUser = async ()=>{
+    // let newUser = Object.assign({}, userData);;
+    // newUser.firstName = "Ime";
+    // setUserData(newUser);
+    let data = await axios.get('https://randomuser.me/api')
+    let jsonData = JSON.parse(data.request.response)
+    let result = jsonData['results'][0];
+    
+    setUserData({
+      firstName:result['name']['first'],
+    lastName:result['name']['last'],
+    description:result['gender'],
+    backgroundPhoto: '../public/bg-img.jpg',
+    profilePhoto: result['picture']['large'],
+    followers: getRandomInt(10000),
+    following: getRandomInt(10000),
+    location:result['location']['city'],
+    email: result['email']
+    })
+  
   }
   
   const changeName = event=>{
@@ -30,7 +50,7 @@ function Card(props) {
     
     setFirstName(()=>document.getElementById('ime-input').value)
   }
-
+  
 
   return (
     <>
