@@ -2,18 +2,8 @@ import { useState, useEffect } from 'react'
 import './Card.css'
 import axios from 'axios';
 
-function Card()  {
-  const[userData, setUserData]= useState({
-    firstName:'Name',
-    lastName:'Lastname',
-    description:'Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro facere quisquam saepe nobis iure error, natus eos dolorem id illum.',
-    backgroundPhoto: '../public/bg-img.jpg',
-    profilePhoto: '../public/profil.jpg',
-    followers: 1234,
-    following: 512,
-    location:'SI',
-    email: 'neki@gmail.com'
-  });
+function Card(props)  {
+  const[userData, setUserData]= useState(props.data);
   //const [followers, setFollowers] = useState(1234)
   //const [firstName, setFirstName] = useState('')
 

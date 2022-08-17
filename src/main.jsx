@@ -9,7 +9,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     {/* <App/> */}
     {/* <Card name="Ime Primek"/> */}
-    <Cards num={10}/>
+    <Cards num={4}/>
      
    
    
