@@ -1,9 +1,8 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './Card.css'
 import axios from 'axios';
 
-function Card() {
-
+function Card()  {
   const[userData, setUserData]= useState({
     firstName:'Name',
     lastName:'Lastname',
@@ -21,6 +20,7 @@ function Card() {
   function getRandomInt(max) {
     return Math.floor(Math.random() * max);
   }
+
 
 
   const setRandomUser = async ()=>{
@@ -50,7 +50,7 @@ function Card() {
     
     setFirstName(()=>document.getElementById('ime-input').value)
   }
-  
+
 
   return (
     <>
