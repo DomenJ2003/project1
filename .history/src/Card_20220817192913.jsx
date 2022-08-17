@@ -11,8 +11,8 @@ function Card(props) {
     profilePhoto: "/profil.jpg",
     followers: getRandomInt(10000),
     following: getRandomInt(10000),
-    location: "SI",
-    email: "a@gmail.com",
+    location: result["location"]["city"],
+    email: result["email"],
   });
   //const [followers, setFollowers] = useState(1234)
   //const [firstName, setFirstName] = useState('')

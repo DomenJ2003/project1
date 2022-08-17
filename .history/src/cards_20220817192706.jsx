@@ -8,8 +8,16 @@ function Cards(props) {
 
   for (let i = 0; i < props.num; i++) {
     cards.push(<Card key={i} />);
+
+    return (
+      <h1>Konec</h1>
+      // <div className="ogrodje">
+      //     {
+      //         cards
+      //     }
+      // </div>
+    );
   }
-  return <div className="ogrodje">{cards}</div>;
 }
 
 export default Cards;
