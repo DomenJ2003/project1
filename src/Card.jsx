@@ -1,10 +1,21 @@
 import { useState } from 'react'
 import './Card.css'
 
-function Card() {
-  // const [count, setCount] = useState(0)
+function Card(props) {
+
+  
+  const [followers, setFollowers] = useState(1234)
+  const [firstName, setFirstName] = useState('')
+
+  const changeName = event=>{
+    //console.log(event.target.value);
+    
+    setFirstName(()=>document.getElementById('ime-input').value)
+    }
+
 
   return (
+    <>
     <div className="Card">
       <div className="okvirSlike">
         <img className='slika' src="../public/bg-img.jpg" alt="" />
@@ -13,20 +24,23 @@ function Card() {
         <img className='profil-photo' src="../public/profil.jpg" alt="" />
       </div>
       <div className="splosni-podatki">
-        <h3>Ime Primek</h3>
+        <h3>{firstName} Primek</h3>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro facere quisquam saepe nobis iure error, natus eos dolorem id illum.</p>
       </div>
       <div className="links">
-        <a href="#">
+ 
+        <p>
+          <i className="fa-solid fa-location-dot"></i>
           Hungary
-        </a>
-        <a href="#">
+        </p>
+        <a href="mailto:">
+        <i className="fa-solid fa-envelope"></i>
           Email me
         </a>
       </div>
       <div className="followers-info">
         <div className="box">
-          <b>1522</b>
+          <b>{followers}</b>
           <p>Followers</p>
         </div>
         <div className="box">
@@ -34,10 +48,12 @@ function Card() {
           <p>Following</p>
         </div>
       </div>
-      <div className="follow-btn-container">
+      <button className="follow-btn-container" onClick={()=>setFollowers((followers)=>followers+1)}>
         Follow
-      </div>
+      </button>
     </div>
+    <input type="text" name="ime" id="ime-input" onChange={changeName}/>
+    </>
   )
 }
 

@@ -3,6 +3,7 @@
   text-align: center;
 }
 .Card{
+  margin-bottom: 10vh;
   min-width: 400px;
   border-radius: 30px;
   -webkit-box-shadow: 10px 10px 18px 0px rgba(37,37,37,0.53);
@@ -102,6 +103,8 @@ a:active {
 }
 
 .follow-btn-container{
+  border: none;
+  width: 100%;
   min-height: 70px;
   background-color: #3aad05;
   color: #fff;
@@ -112,4 +115,8 @@ a:active {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+i{
+  padding-right: 10px;
 }

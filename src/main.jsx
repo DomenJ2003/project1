@@ -6,7 +6,8 @@ import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    {/* <App /> */}
-    <Card />
+    {/* <App/> */}
+    <Card name="Ime Primek"/>
+   
   </React.StrictMode>
 )
