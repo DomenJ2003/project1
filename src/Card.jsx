@@ -3,17 +3,7 @@ import "./Card.css";
 import axios from "axios";
 
 function Card(props) {
-  const [userData, setUserData] = useState({
-    firstName: "FirstName",
-    lastName: "LastName",
-    description: "des..",
-    backgroundPhoto: "../public/bg-img.jpg",
-    profilePhoto: "/profil.jpg",
-    followers: getRandomInt(10000),
-    following: getRandomInt(10000),
-    location: "SI",
-    email: "a@gmail.com",
-  });
+  const [userData, setUserData] = useState(props.data);
   //const [followers, setFollowers] = useState(1234)
   //const [firstName, setFirstName] = useState('')
 
