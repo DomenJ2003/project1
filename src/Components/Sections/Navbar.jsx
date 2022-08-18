@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './navbar.css'
 import Button from '../General/Button'
+import Dropdown from '../General/Dropodown'
 
 
 function Navbar() {
@@ -12,8 +13,8 @@ function Navbar() {
             <img src="./logo.svg" alt="" />
         </div>
         <div className="findbarlinks">
-            <div className="findbar">
-                
+            <form>
+                <div className="findbar">
                     <div className="search">
                         <input type="text" className='input-text'  placeholder='pizza, pub, Shanahans' />
                     </div>
@@ -29,56 +30,20 @@ function Navbar() {
                         </svg>
                     </div>
               
-            </div>
+                </div>
+            </form>
             <div className="links">
-                <div className="link">
-                    <span>
-                        Restaurants
-                    </span>
-                    <span>
-                        <svg width={24} height={24} className="arrow">
-                            <path d="M12 15.25a1 1 0 01-.7-.29l-4.58-4.5A1.011 1.011 0 018.12 9L12 12.85 15.88 9a1 1 0 111.4 1.42L12.7 15a1 1 0 01-.7.25z"></path>
-                        </svg>
-                    </span>
-                </div>
-                <div className="link">
-                <span>
-                Home Services
-                        
-                    </span>
-                    <span>
-                        <svg width={24} height={24} className="arrow">
-                            <path d="M12 15.25a1 1 0 01-.7-.29l-4.58-4.5A1.011 1.011 0 018.12 9L12 12.85 15.88 9a1 1 0 111.4 1.42L12.7 15a1 1 0 01-.7.25z"></path>
-                        </svg>
-                    </span>
-                </div>
-                <div className="link">
-                <span>
-                        Auto Services
-                    </span>
-                    <span>
-                        <svg width={24} height={24} className="arrow">
-                            <path d="M12 15.25a1 1 0 01-.7-.29l-4.58-4.5A1.011 1.011 0 018.12 9L12 12.85 15.88 9a1 1 0 111.4 1.42L12.7 15a1 1 0 01-.7.25z"></path>
-                        </svg>
-                    </span>
-                </div>
-                <div className="link">
-                <span>
-                        More
-                    </span>
-                    <span>
-                        <svg width={24} height={24} className="arrow">
-                            <path d="M12 15.25a1 1 0 01-.7-.29l-4.58-4.5A1.011 1.011 0 018.12 9L12 12.85 15.88 9a1 1 0 111.4 1.42L12.7 15a1 1 0 01-.7.25z"></path>
-                        </svg>
-                    </span>
-                </div>
+                <Dropdown name="Restaurants" links={['Delivery', 'Reservations', 'Burgers', 'Japanese', 'Chinese', 'Mexican', 'Italian', 'Thai']} />
+                <Dropdown name="Home Services" links={['Contractors', 'Landscaping', 'Electricians', 'Locksmiths', 'Home Cleaners', 'Movers', 'HVAC', 'Plumbers']} />
+                <Dropdown name="Auto Services" links={['Auto Repair', 'Car Dealers', 'Auto Detailing', 'Oil Change', 'Body Shops', 'Parking', 'Car Wash', 'Towing']} />
+                <Dropdown name="More" links={['Dry Cleaning', 'Hair Salons', 'Phone Repair', 'Gyms', 'Bars', 'Massage', 'Nightlife', 'Shopping']} />   
             </div>
         </div>
         <div className="buttons">
-            <Button text="For Businesses" class="btn"/>
-            <Button text="Write a Review" class="btn"/>
-            <Button text="Log In" class="LogInBtn"/>
-            <Button text="Sign Up" class="SignUpBtn"/>
+            <Button text="For Businesses" classtype="btn"/>
+            <Button text="Write a Review" classtype="btn"/>
+            <Button text="Log In" classtype="LogInBtn"/>
+            <Button text="Sign Up" classtype="SignUpBtn"/>
         </div>
         
     </div>
