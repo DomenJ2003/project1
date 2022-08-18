@@ -1,8 +1,7 @@
 import { useState } from 'react'
 import './navbar.css'
 import Button from '../General/Button'
-import LogInButton from '../General/LogInBtn'
-import SignUpButton from '../General/SignUpBtn'
+
 
 function Navbar() {
   
@@ -19,7 +18,6 @@ function Navbar() {
                         <input type="text" className='input-text'  placeholder='pizza, pub, Shanahans' />
                     </div>
                     <div className="line">
-                            
                         </div>
                     <div className="city">
                         
@@ -77,10 +75,10 @@ function Navbar() {
             </div>
         </div>
         <div className="buttons">
-    <Button text="For Businesses"/>
-    <Button text="Write a Review"/>
-    <LogInButton text="Log In"/>
-    <SignUpButton text="Sign Up"/>
+            <Button text="For Businesses" class="btn"/>
+            <Button text="Write a Review" class="btn"/>
+            <Button text="Log In" class="LogInBtn"/>
+            <Button text="Sign Up" class="SignUpBtn"/>
         </div>
         
     </div>
