@@ -1,0 +1,69 @@
+.input-text{
+    height: 100%;
+    width: 100%;
+    font-size: 24px;
+    padding: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border: 2px solid #fff;
+}
+
+.input-city{
+    height: 100%;
+    width: 100%;
+    font-size: 24px;
+    padding: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border: 2px solid #fff;
+}
+
+input:focus{
+    outline: none;
+}
+
+.find:focus{
+    outline: none;
+}
+
+.line{
+    width: 1px;
+    background-color:#565656;
+}
+
+.search-icon{
+    color: #fff;
+    fill: #fff;
+}
+.findbar{
+    
+    height: 48px;
+    display: flex;
+    flex-direction: row;
+}
+
+
+.find{
+    background-color: red;
+    width: 56px;
+    height: 48px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    margin-left: 10px;
+    border: none;
+}
+
+.search{
+    width: calc(50% - 28px);
+    height: 48px;
+    
+}
+
+.city{
+    width: calc(50% - 28px);
+    height: 48px;
+    
+}

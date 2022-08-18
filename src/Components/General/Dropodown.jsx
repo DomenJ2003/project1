@@ -7,7 +7,7 @@ function Dropdown(props) {
 
     for(const link in props.links){
         
-        links.push(<a href="#" key={link}>{props.links[link]}</a>)
+        links.push(<a className='dropdown-link' href="#" key={link}>{props.links[link]}</a>)
     }
   
 

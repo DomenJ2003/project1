@@ -36,6 +36,7 @@
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
     border-bottom-left-radius: 15px;
+    padding: 10px;
    
   }
 
@@ -64,12 +65,18 @@
     display: block;
     white-space: nowrap;
   }
+
+
   
-  .dropdown-content a:hover {background-color: #f1f1f1}
+  .dropdown-content a:hover {
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 15px;
+  }
   
   .dropdown:hover .dropdown-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    gap: 5px;
   }
   
   .dropdown:hover .dropbtn {
