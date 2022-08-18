@@ -1,0 +1,81 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navbar{
+    height: 130px;
+    background-color: aqua;
+    padding: 24px 40px 0;
+    display: flex;
+    flex-direction: row;
+}
+
+.findbarlinks{
+    margin-left: 5%;
+    width: 50%;
+    margin-bottom: 10px;
+    background-color: blue;
+}
+
+.findbar{
+    background-color: antiquewhite;
+    height: 48px;
+    display: flex;
+    flex-direction: row;
+}
+
+
+
+.find{
+    background-color: red;
+    width: 56px;
+    height: 48px;
+    
+}
+
+.search{
+    width: calc(50% - 28px);
+    height: 48px;
+    background-color: beige;
+}
+
+.city{
+    width: calc(50% - 28px);
+    height: 48px;
+    background-color:orange;
+}
+
+.links{
+    height: 58px;
+    background-color: azure;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+}
+
+.link{
+    height: 20px;
+    background-color: white;
+    margin-left: 20px;
+    padding: 0 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.arrow{
+    padding-top: 3px;
+}
+
+span{
+    white-space: nowrap;
+}
+
+.buttons{
+    height: 48px;
+    color: greenyellow;
+    width: 500px;
+}
