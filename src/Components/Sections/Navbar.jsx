@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import './navbar.css'
+import Button from '../General/Button'
+import LogInButton from '../General/LogInBtn'
 
-
-function App() {
+function Navbar() {
   
   return (
     <div className="navbar">
@@ -68,11 +69,14 @@ function App() {
             </div>
         </div>
         <div className="buttons">
-            
+    <Button text="For Businesses"/>
+    <Button text="Write a Review"/>
+    <LogInButton text="Log In"/>
+    <Button/>
         </div>
         
     </div>
   );
 }
 
-export default App
+export default Navbar
