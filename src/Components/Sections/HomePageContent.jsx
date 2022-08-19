@@ -1,64 +1,47 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Card from '../General/Card';
-import './HomePageContent.css'
+import './HomePageContent.css';
+import { useNavigate } from "react-router-dom";
+import {getUsers} from '../../helper/api'
+
 
 function HomePageContent() {
 
-  const card_data = [
-    
-    {
-      'header': 'Prva karta',
-      'content': 'descriptons...',
-      'date': new Date(),
-      'image' : 'https://www.thedesignwork.com/wp-content/uploads/2011/10/Random-Pictures-of-Conceptual-and-Creative-Ideas-02.jpg?w=640'
-    },
-    {
-      'header': 'Druga karta',
-      'content': 'descriptons...',
-      'date': new Date(),
-      'image' : 'https://www.thedesignwork.com/wp-content/uploads/2011/10/Random-Pictures-of-Conceptual-and-Creative-Ideas-02.jpg?w=640'
-    },
-    {
-      'header': 'Tretija karta',
-      'content': 'descriptons...',
-      'date': new Date(),
-      'image' : 'https://www.thedesignwork.com/wp-content/uploads/2011/10/Random-Pictures-of-Conceptual-and-Creative-Ideas-02.jpg?w=640'
-    },
-    {
-      'header': 'Četrta karta',
-      'content': 'descriptons...',
-      'date': new Date(),
-      'image' : 'https://www.thedesignwork.com/wp-content/uploads/2011/10/Random-Pictures-of-Conceptual-and-Creative-Ideas-02.jpg?w=640'
-    },
-    {
-      'header': 'Peta karta',
-      'content': 'descriptons...',
-      'date': new Date(),
-      'image' : 'https://www.thedesignwork.com/wp-content/uploads/2011/10/Random-Pictures-of-Conceptual-and-Creative-Ideas-02.jpg?w=640'
-    },
-    {
-      'header': 'Šesta karta',
-      'content': 'descriptons...',
-      'date': new Date(),
-      'image' : 'https://www.thedesignwork.com/wp-content/uploads/2011/10/Random-Pictures-of-Conceptual-and-Creative-Ideas-02.jpg?w=640'
-    },
-    {
-      'header': 'Sedma karta',
-      'content': 'descriptons...',
-      'date': new Date(),
-      'image' : 'https://www.thedesignwork.com/wp-content/uploads/2011/10/Random-Pictures-of-Conceptual-and-Creative-Ideas-02.jpg?w=640'
-    },
-  ]
-
  
+
+  const showUserData = ()=>{
+    navigate('/user')
+  }
+
+  const navigate = useNavigate()
+
+  const [users, setUsers] = useState([]);
+  
+  const getData= async ()=>{
+    const data = await getUsers();
+    setUsers(data);
+    console.log(data);
+  }
+  
+  useEffect(()=>{
+    getData();
+  }, []);
+
+
   
   return (
     <div className="homepage-content">
       <h1>Recent Activity</h1>
       <div className="cards-container">
-        {card_data.map((card_data, index)=>(
-          <Card key={index} {...card_data}/>
-        ))}
+        {users.map((user, index)=>{
+          const cardData = {
+            image: user.avatar,
+            header: `${user.first_name} ${user.last_name}`,
+            date: new Date(user.date_of_birth),
+          };
+        
+          return <Card key={index} {...cardData}  onClickFunction={showUserData} />;
+        })}
       </div>
     </div>
   );

@@ -5,14 +5,14 @@ import './Card.css'
 function Card(props) {
   
   return (
-    <div className="card-container">
+    <div className="card-container" onClick={props.onClickFunction}>
       <div className="card-header">
         <span className='card-title'>
             <i className="fa-solid fa-user"></i>{'  '}
             {props.header}
         </span>
         <br />
-        <span>{props.date.toLocaleDateString()}</span>
+        <span>{props.date.toLocaleDateString()}</span> 
         
       </div>
       <div className="card-content">
