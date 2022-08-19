@@ -8,7 +8,7 @@ import Searchbar from '../General/Serchbar';
 function Navbar() {
   
   return (
-    <div className="hero-nav-section">
+    
     <div className="navbar">
         <div className="logo">
             <img src="./logo.svg" alt="" />
@@ -30,7 +30,7 @@ function Navbar() {
         </div>
         
     </div>
-    </div>
+   
   );
 }
 
