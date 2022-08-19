@@ -1,0 +1,12 @@
+.homepage-content{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.cards-container{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    width: 80%;
+    gap: 10px;
+}

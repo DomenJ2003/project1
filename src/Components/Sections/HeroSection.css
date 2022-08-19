@@ -4,4 +4,5 @@
     background: linear-gradient(90deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.1) 55%), url('../../../public/background.jpg');
     background-position: center;
     background-size: cover;
+    margin-top: -130px;
 }
