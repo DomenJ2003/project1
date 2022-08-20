@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { getUsers } from "../../helper/api";
 
 function HomePageContent() {
-  const showUserData = (user) => {
+  const showUserData = (id) => {
     navigate("/user", { state: { user: user } });
   };
 
@@ -31,7 +31,7 @@ function HomePageContent() {
           const cardData = {
             image: user.avatar,
             header: `${user.first_name} ${user.last_name}`,
-            date: user.date_of_birth,
+            date: new Date(user.date_of_birth),
           };
 
           return (

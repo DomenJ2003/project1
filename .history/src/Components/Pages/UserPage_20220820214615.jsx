@@ -14,7 +14,7 @@ function UserPage(props) {
     setCardData({
       image: data.avatar,
       header: `${data.first_name} ${data.last_name}`,
-      date: data.date_of_birth,
+      date: new Date(data.date_of_birth),
     });
   };
 
@@ -23,25 +23,25 @@ function UserPage(props) {
       setCardData({
         image: state.user.avatar,
         header: `${state.user.first_name} ${state.user.last_name}`,
-        date: state.user.date_of_birth,
+        date: new Date(state.user.date_of_birth),
       });
+      console.log("ok");
     } catch (e) {
-      getData();
+      await getData();
     }
   }, []);
 
   return (
     <>
       <h1>Podatki Uporabnika</h1>
-      <div className="solo-card-container">
-        <Card
-          key={1}
-          image={cardData.image}
-          header={cardData.header}
-          date={cardData.date}
-          onClickFunction={() => {}}
-        />
-      </div>
+      <h2>{cardData.header}</h2>
+      <Card
+        key={1}
+        image={cardData.image}
+        header={cardData.header}
+        date={cardData.date}
+        onClickFunction={() => {}}
+      />
     </>
   );
 }

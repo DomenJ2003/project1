@@ -33,15 +33,13 @@ function UserPage(props) {
   return (
     <>
       <h1>Podatki Uporabnika</h1>
-      <div className="solo-card-container">
-        <Card
-          key={1}
-          image={cardData.image}
-          header={cardData.header}
-          date={cardData.date}
-          onClickFunction={() => {}}
-        />
-      </div>
+      <Card
+        key={1}
+        image={cardData.image}
+        header={cardData.header}
+        date={cardData.date}
+        onClickFunction={() => {}}
+      />
     </>
   );
 }

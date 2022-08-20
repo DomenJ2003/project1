@@ -3,7 +3,10 @@ import "./Card.css";
 
 function Card(props) {
   return (
-    <div className="card-container" onClick={props.onClickFunction}>
+    <div
+      className="card-container"
+      onClick={props.onClickFunction === {} ? () => {} : props.onClickFunction}
+    >
       <div className="card-header">
         <span className="card-title">
           <i className="fa-solid fa-user"></i>
@@ -11,7 +14,7 @@ function Card(props) {
           {props.header}
         </span>
         <br />
-        <span>{props.date}</span>
+        <span>{props.date.toLocaleDateString()}</span>
       </div>
       <div className="card-content">
         {props.content}

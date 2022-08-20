@@ -31,7 +31,7 @@ function HomePageContent() {
           const cardData = {
             image: user.avatar,
             header: `${user.first_name} ${user.last_name}`,
-            date: user.date_of_birth,
+            date: new Date(user.date_of_birth),
           };
 
           return (

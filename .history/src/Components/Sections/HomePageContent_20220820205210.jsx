@@ -5,8 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { getUsers } from "../../helper/api";
 
 function HomePageContent() {
-  const showUserData = (user) => {
-    navigate("/user", { state: { user: user } });
+  const showUserData = (id) => {
+    navigate("/user", { state: { id: id, color: "green" } });
   };
 
   const navigate = useNavigate();
@@ -31,14 +31,15 @@ function HomePageContent() {
           const cardData = {
             image: user.avatar,
             header: `${user.first_name} ${user.last_name}`,
-            date: user.date_of_birth,
+            date: new Date(user.date_of_birth),
+            id: user.id,
           };
 
           return (
             <Card
               key={index}
               {...cardData}
-              onClickFunction={() => showUserData(user)}
+              onClickFunction={() => showUserData(user.id)}
             />
           );
         })}

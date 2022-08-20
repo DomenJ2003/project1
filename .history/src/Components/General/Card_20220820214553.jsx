@@ -11,7 +11,7 @@ function Card(props) {
           {props.header}
         </span>
         <br />
-        <span>{props.date}</span>
+        {/* <span>{props.date.toLocaleDateString()}</span> */}
       </div>
       <div className="card-content">
         {props.content}

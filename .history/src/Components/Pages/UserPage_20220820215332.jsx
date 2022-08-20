@@ -33,7 +33,7 @@ function UserPage(props) {
   return (
     <>
       <h1>Podatki Uporabnika</h1>
-      <div className="solo-card-container">
+      <div className="cards-container">
         <Card
           key={1}
           image={cardData.image}
