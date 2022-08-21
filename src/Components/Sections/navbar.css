@@ -1,11 +1,12 @@
 .navbar{
-    /* position: fixed; */
+    position: relative;
     width: 100%;
     height: 130px;    
     padding: 24px 40px 0;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    background: linear-gradient(180deg, #000000b3, #0000004d 72.92%, #0000);
 
 }
 

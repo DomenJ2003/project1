@@ -18,8 +18,14 @@ function HeroSection() {
         background: `${getRndImg()}`,
         backgroundPosition: "center",
         backgroundSize: "cover",
+        display: "flex",
+        justifyContent: "start",
+        alignItems: "center",
       }}
-    ></div>
+    >
+      <h1 className="hero-title">Connect with great local businesses</h1>
+      <h4></h4>
+    </div>
   );
 }
 
