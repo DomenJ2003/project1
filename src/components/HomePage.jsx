@@ -1,9 +1,10 @@
+import { useState } from "react";
 import Card from "./Card";
 import AddTodoModal from "./modals/AddTodoModal";
 
-function HomePage() {
+function HomePage({isModalVisible, setModalVisible}) {
   const todos = [1, 1, 1, 1, 1];
-  const isModalVisible = true
+  
 
   return (
     <>
@@ -12,7 +13,7 @@ function HomePage() {
           <Card key={index} />
         ))}
       </div>
-      <AddTodoModal visible={isModalVisible} />
+      <AddTodoModal visible={isModalVisible} setVisible={setModalVisible}/>
     </>
   );
 }

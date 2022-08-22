@@ -1,6 +1,6 @@
 import "./modal.css";
 
-function AddTodoModal({ visible }) {
+function AddTodoModal({ visible, setVisible }) {
   if (!visible) {
     return <></>;
   }
@@ -16,18 +16,18 @@ function AddTodoModal({ visible }) {
                 class="btn-close"
                 data-mdb-dismiss="modal"
                 aria-label="Close"
+                onClick={() => setVisible(false)}
               ></button>
             </div>
             <div class="modal-body">
               <div>
-              <label class="form-label" for="todo-title">
+                <label class="form-label" for="todo-title">
                   Example label
                 </label>
                 <input type="text" id="todo-title" class="form-control" />
-                
               </div>
               <div>
-              <label class="form-label" for="todo-descripton">
+                <label class="form-label" for="todo-descripton">
                   Message
                 </label>
                 <textarea
@@ -35,7 +35,6 @@ function AddTodoModal({ visible }) {
                   id="todo-descripton"
                   rows="4"
                 ></textarea>
-                
               </div>
             </div>
             <div class="modal-footer">

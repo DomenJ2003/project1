@@ -1,11 +1,17 @@
 
-function Navbar(){
+function Navbar({openAddTodoModal}){
 
     return(
         <nav className="navbar navbar-light bg-light">
         <div className="container-fluid">
           <a className="navbar-brand">Navbar</a>
+          
+
+          
           <form className="d-flex input-group w-auto">
+          <button type="button" class="btn btn-primary me-5" style={{height: "35.27px"}} onClick={openAddTodoModal}>
+          Add To DO
+        </button>
             <input
               type="search"
               className="form-control rounded"
@@ -17,6 +23,7 @@ function Navbar(){
               <i className="fas fa-search"></i>
             </span>
           </form>
+          
         </div>
       </nav>
     );
