@@ -7,12 +7,13 @@ import HomePage from "./components/HomePage";
 function App() {
 
   const [isModalVisible, setModalVisible] = useState(false); 
+  const [todos, setTodos] = useState([]);
 
   return (
     <div className="App">
       <Navbar openAddTodoModal={()=>setModalVisible(true)} />
       <div className="main-container">
-        <HomePage {...{isModalVisible, setModalVisible}} />
+        <HomePage {...{isModalVisible, setModalVisible, todos, setTodos}} />
       </div>
     </div>
   );

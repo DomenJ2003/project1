@@ -1,9 +1,22 @@
+import { useRef } from "react";
 import "./modal.css";
 
-function AddTodoModal({ visible, setVisible }) {
+function AddTodoModal({ visible, setVisible, addTodo }) {
   if (!visible) {
     return <></>;
   }
+
+  const titleRef = useRef(null);
+  const descRef = useRef(null);
+
+  const saveTodo = ()=>{
+    const title = titleRef.current.value
+    const description = descRef.current.value
+    addTodo(title, description)
+    setVisible(false)
+  }
+
+
   return (
     <div className="my-modal-container">
       <div class="modal" tabindex="-1">
@@ -22,15 +35,16 @@ function AddTodoModal({ visible, setVisible }) {
             <div class="modal-body">
               <div>
                 <label class="form-label" for="todo-title">
-                  Example label
+                  Title
                 </label>
-                <input type="text" id="todo-title" class="form-control" />
+                <input ref={titleRef} type="text" id="todo-title" class="form-control" />
               </div>
               <div>
                 <label class="form-label" for="todo-descripton">
-                  Message
+                  Description
                 </label>
                 <textarea
+                    ref={descRef}
                   class="form-control"
                   id="todo-descripton"
                   rows="4"
@@ -38,14 +52,8 @@ function AddTodoModal({ visible, setVisible }) {
               </div>
             </div>
             <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-mdb-dismiss="modal"
-              >
-                Close
-              </button>
-              <button type="button" class="btn btn-primary">
+             
+              <button type="button" class="btn btn-primary" onClick={saveTodo}>
                 Save changes
               </button>
             </div>

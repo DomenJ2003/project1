@@ -1,5 +1,6 @@
 
-function Card (){
+function Card ({todo}){
+    
     return(
         <div className="col-xl-4 col-lg-6 mb-4">
           <div className="card">
@@ -12,8 +13,9 @@ function Card (){
                   className="rounded-circle"
                 />
                 <div className="ms-3">
-                  <p className="fw-bold mb-1">John Doe</p>
-                  <p className="text-muted mb-0">john.doe@gmail.com</p>
+                  <p className="fw-bold mb-1">{todo.title}</p>
+                  <p className="text-muted mb-0">{todo.descripton}</p>
+                
                 </div>
               </div>
             </div>
