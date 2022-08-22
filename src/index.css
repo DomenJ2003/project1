@@ -17,8 +17,10 @@
   -webkit-text-size-adjust: 100%;
 }
 
-nav {
-  margin-bottom: 5vh;
+.form-control{
+  border-bottom: 3px solid #888 !important;
+  border-radius: 0 !important;
+  margin-bottom: 10px !important;
 }
 
 
