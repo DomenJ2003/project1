@@ -19,41 +19,41 @@ function AddTodoModal({ visible, setVisible, addTodo }) {
 
   return (
     <div className="my-modal-container">
-      <div class="modal" tabindex="-1">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Modal title</h5>
+      <div className="modal" >
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title">Modal title</h5>
               <button
                 type="button"
-                class="btn-close"
+                className="btn-close"
                 data-mdb-dismiss="modal"
                 aria-label="Close"
                 onClick={() => setVisible(false)}
               ></button>
             </div>
-            <div class="modal-body">
+            <div className="modal-body">
               <div>
-                <label class="form-label" for="todo-title">
+                <label className="form-label" htmlFor="todo-title">
                   Title
                 </label>
-                <input ref={titleRef} type="text" id="todo-title" class="form-control" />
+                <input ref={titleRef} type="text" id="todo-title" className="form-control" />
               </div>
               <div>
-                <label class="form-label" for="todo-descripton">
+                <label className="form-label" htmlFor="todo-descripton">
                   Description
                 </label>
                 <textarea
                     ref={descRef}
-                  class="form-control"
+                  className="form-control"
                   id="todo-descripton"
                   rows="4"
                 ></textarea>
               </div>
             </div>
-            <div class="modal-footer">
+            <div className="modal-footer">
              
-              <button type="button" class="btn btn-primary" onClick={saveTodo}>
+              <button type="button" className="btn btn-primary" onClick={saveTodo}>
                 Save changes
               </button>
             </div>

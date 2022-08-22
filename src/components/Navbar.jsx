@@ -4,12 +4,12 @@ function Navbar({openAddTodoModal}){
     return(
         <nav className="navbar navbar-light bg-light">
         <div className="container-fluid">
-          <a className="navbar-brand">Navbar</a>
+          <a className="navbar-brand">ToDo App</a>
           
 
           
           <form className="d-flex input-group w-auto">
-          <button type="button" class="btn btn-primary me-5" style={{height: "35.27px"}} onClick={openAddTodoModal}>
+          <button type="button" className="btn btn-primary me-5" style={{height: "35.27px"}} onClick={openAddTodoModal}>
           Add To DO
         </button>
             <input
