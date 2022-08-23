@@ -1,4 +1,9 @@
+import {TODO_DELETE} from '../actions/types'
+import {useDispatch} from 'react-redux';
+
 function Card({ todo }) {
+  const date = new Date(todo.date_created);
+  const dispatch = useDispatch();
   return (
     <div className="col-xl-4 col-lg-6 mb-4">
       <div className="card">
@@ -13,10 +18,10 @@ function Card({ todo }) {
               />
               <div className="ms-3">
                 <p className="fw-bold mb-1">{todo.title}</p>
-                <p className="text-muted mb-0">{todo.descripton}</p>
+                <p className="text-muted mb-0">{todo.description}</p>
               </div>
             </div>
-            <span className="badge rounded-pill badge-primary">{todo.date_created.toLocaleDateString()}</span>
+            <span className="badge rounded-pill badge-primary">{date.toLocaleDateString()}</span>
           </div>
         </div>
         <div className="card-footer border-0 bg-light p-2 d-flex justify-content-around">
@@ -35,6 +40,7 @@ function Card({ todo }) {
             href="#"
             role="button"
             data-ripple-color="primary"
+            onClick={()=>dispatch({type: TODO_DELETE, payload: todo.ident})}
           >
             Delete<i className="fas fa-trash ms-2"></i>
           </a>

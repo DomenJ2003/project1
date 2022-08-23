@@ -1,32 +1,36 @@
 import { useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {HIDE_TODO_MODAL} from '../../actions/types';
+import { HIDE_TODO_MODAL, TODO_ADD } from "../../actions/types";
+import { uuid } from "./../../utils";
 
 import "./modal.css";
 
-function AddTodoModal({ addTodo }) {
-  
-  const isModelVisible = useSelector(state=> state.todo.todoModalVisible);
+function AddTodoModal() {
+  const isModelVisible = useSelector((state) => state.todo.todoModalVisible);
   const titleRef = useRef(null);
   const descRef = useRef(null);
   const dispatch = useDispatch();
-  
+
   if (!isModelVisible) {
     return <></>;
   }
 
-
-  const saveTodo = ()=>{
-    const title = titleRef.current.value
-    const description = descRef.current.value
-    addTodo(title, description)
-    dispatch({type: HIDE_TODO_MODAL})
-  }
-
+  const saveTodo = () => {
+    const title = titleRef.current.value;
+    const description = descRef.current.value;
+    const ident = uuid();
+    const date = new Date();
+    //addTodo(title, description)
+    dispatch({
+      type: TODO_ADD,
+      payload: { title, description, date_created: date.toJSON(), ident },
+    });
+    dispatch({ type: HIDE_TODO_MODAL });
+  };
 
   return (
     <div className="my-modal-container">
-      <div className="modal" >
+      <div className="modal">
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
@@ -36,7 +40,7 @@ function AddTodoModal({ addTodo }) {
                 className="btn-close"
                 data-mdb-dismiss="modal"
                 aria-label="Close"
-                onClick={() =>  dispatch({type: HIDE_TODO_MODAL})}
+                onClick={() => dispatch({ type: HIDE_TODO_MODAL })}
               ></button>
             </div>
             <div className="modal-body">
@@ -44,14 +48,19 @@ function AddTodoModal({ addTodo }) {
                 <label className="form-label" htmlFor="todo-title">
                   Title
                 </label>
-                <input ref={titleRef} type="text" id="todo-title" className="form-control" />
+                <input
+                  ref={titleRef}
+                  type="text"
+                  id="todo-title"
+                  className="form-control"
+                />
               </div>
               <div>
                 <label className="form-label" htmlFor="todo-descripton">
                   Description
                 </label>
                 <textarea
-                    ref={descRef}
+                  ref={descRef}
                   className="form-control"
                   id="todo-descripton"
                   rows="4"
@@ -59,8 +68,11 @@ function AddTodoModal({ addTodo }) {
               </div>
             </div>
             <div className="modal-footer">
-             
-              <button type="button" className="btn btn-primary" onClick={saveTodo}>
+              <button
+                type="button"
+                className="btn btn-primary"
+                onClick={saveTodo}
+              >
                 Save changes
               </button>
             </div>

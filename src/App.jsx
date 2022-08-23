@@ -6,13 +6,12 @@ import HomePage from "./components/HomePage";
 
 function App() {
 
-  const [todos, setTodos] = useState([]);
 
   return (
     <div className="App">
       <Navbar/>
       <div className="main-container">
-        <HomePage {...{todos, setTodos}} />
+        <HomePage />
       </div>
     </div>
   );

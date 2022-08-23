@@ -21,6 +21,16 @@ export default function(state = initialState, action){
             return {
                 ... state , todoModalVisible: true
             };
+        case TODO_ADD:
+            return{
+                ... state, todoData:[...state.todoData, action.payload]
+            };
+        case TODO_DELETE:
+            const newTodos = state.todoData.filter(todo=> todo.ident !== action.payload)
+            return {
+                ... state, todoData: newTodos
+            };
+        
         default:
             return state;
     }

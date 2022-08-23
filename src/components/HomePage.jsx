@@ -1,27 +1,19 @@
 import { useState } from "react";
 import Card from "./Card";
 import AddTodoModal from "./modals/AddTodoModal";
+import {useSelector} from 'react-redux';
 
-function HomePage({ todos, setTodos }) {
-  const addTodo = (title, descripton) => {
-    setTodos([
-      ...todos,
-      {
-        title,
-        descripton,
-        date_created: new Date(),
-      },
-    ]);
-  };
+function HomePage() {
+  const todos = useSelector(state=> state.todo.todoData)
 
   return (
     <>
       <div className="row">
-        {todos.map((todo, index) => (
-          <Card key={index} todo ={todo} />
+        {todos.map((todo) => (
+          <Card key={todo.ident} todo={todo} />
         ))}
       </div>
-      <AddTodoModal addTodo={addTodo} />
+      <AddTodoModal />
     </>
   );
 }
