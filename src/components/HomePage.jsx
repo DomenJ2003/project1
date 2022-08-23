@@ -1,10 +1,10 @@
 import { useState } from "react";
 import Card from "./Card";
 import AddTodoModal from "./modals/AddTodoModal";
-import {useSelector} from 'react-redux';
+import { useSelector } from "react-redux";
 
 function HomePage() {
-  const todos = useSelector(state=> state.todo.todoData)
+  const todos = useSelector((state) => state.todo.todoData);
 
   return (
     <>

@@ -1,4 +1,4 @@
-import {SHOW_TODO_MODAL} from './../actions/types';
+import {SHOW_TODO_MODAL, TODO_CHANGE_SEARCH} from './../actions/types';
 import {useDispatch} from 'react-redux';
 
 
@@ -6,6 +6,13 @@ import {useDispatch} from 'react-redux';
 function Navbar(){
 
     const dispatch = useDispatch();
+    const updateSearch = (event)=>{
+      event.preventDefault();
+      dispatch({
+        type: TODO_CHANGE_SEARCH,
+        payload: event.target.value
+      });
+    }
 
     return(
         <nav className="navbar navbar-light bg-light">
@@ -16,6 +23,11 @@ function Navbar(){
           Add To DO
         </button>
             <input
+              onChange={
+                (e)=>{
+                  updateSearch(e)
+                }
+              }
               type="search"
               className="form-control rounded"
               placeholder="Search"

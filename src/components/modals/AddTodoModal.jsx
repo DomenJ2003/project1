@@ -23,7 +23,13 @@ function AddTodoModal() {
     //addTodo(title, description)
     dispatch({
       type: TODO_ADD,
-      payload: { title, description, date_created: date.toJSON(), ident },
+      payload: {
+        title,
+        description,
+        date_created: date.toJSON(),
+        ident,
+        done: false,
+      },
     });
     dispatch({ type: HIDE_TODO_MODAL });
   };
