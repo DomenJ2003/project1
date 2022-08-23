@@ -11,6 +11,7 @@ function AddTodoModal() {
   let currentDescription = useSelector(
     (state) => state.todo.currentDescription
   );
+  let currentIdent = useSelector((state) => state.todo.currentIdent);
 
   const titleRef = useRef(null);
   const descRef = useRef(null);
@@ -47,6 +48,7 @@ function AddTodoModal() {
         payload: {
           title,
           description,
+          ident: currentIdent,
         },
       });
     }
