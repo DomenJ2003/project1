@@ -1,4 +1,9 @@
-import { TODO_CHANGE_STATUS, TODO_DELETE } from "../actions/types";
+import {
+  TODO_CHANGE_STATUS,
+  TODO_DELETE,
+  SHOW_TODO_MODAL,
+  TODO_EDIT,
+} from "../actions/types";
 import { useDispatch } from "react-redux";
 
 const CheckStatus = ({ done, dispatch, ident }) => {
@@ -19,15 +24,20 @@ const CheckStatus = ({ done, dispatch, ident }) => {
       ></i>
     );
   }
-  return <i
-  onClick={() =>
-    dispatch({
-      type: TODO_CHANGE_STATUS,
-      payload: {
-        ident,
-        done: true,
-      },
-    })} className="far fa-check-square fa-3x"></i>;
+  return (
+    <i
+      onClick={() =>
+        dispatch({
+          type: TODO_CHANGE_STATUS,
+          payload: {
+            ident,
+            done: true,
+          },
+        })
+      }
+      className="far fa-check-square fa-3x"
+    ></i>
+  );
 };
 
 function Card({ todo }) {
@@ -39,7 +49,11 @@ function Card({ todo }) {
         <div className="card-body">
           <div className="d-flex justify-content-between align-items-center">
             <div className="d-flex align-items-center">
-              <CheckStatus done={todo.done} dispatch={dispatch} ident={todo.ident} />
+              <CheckStatus
+                done={todo.done}
+                dispatch={dispatch}
+                ident={todo.ident}
+              />
               <div className="ms-3">
                 <p className="fw-bold mb-1">{todo.title}</p>
                 <p className="text-muted mb-0">{todo.description}</p>
@@ -56,6 +70,17 @@ function Card({ todo }) {
             href="#"
             role="button"
             data-ripple-color="primary"
+            onClick={() => {
+              console.log(todo.title);
+              dispatch({
+                type: SHOW_TODO_MODAL,
+                payload: {
+                  title: todo.title,
+                  description: todo.description,
+                  ident: todo.ident,
+                },
+              });
+            }}
           >
             Edit<i className="fas fa-edit ms-2"></i>
           </a>

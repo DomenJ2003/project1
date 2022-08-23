@@ -1,12 +1,17 @@
 import { useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { HIDE_TODO_MODAL, TODO_ADD } from "../../actions/types";
+import { HIDE_TODO_MODAL, TODO_ADD, TODO_EDIT } from "../../actions/types";
 import { uuid } from "./../../utils";
 
 import "./modal.css";
 
 function AddTodoModal() {
   const isModelVisible = useSelector((state) => state.todo.todoModalVisible);
+  let currentTitle = useSelector((state) => state.todo.currentTitle);
+  let currentDescription = useSelector(
+    (state) => state.todo.currentDescription
+  );
+
   const titleRef = useRef(null);
   const descRef = useRef(null);
   const dispatch = useDispatch();
@@ -16,22 +21,35 @@ function AddTodoModal() {
   }
 
   const saveTodo = () => {
-    const title = titleRef.current.value;
-    const description = descRef.current.value;
-    const ident = uuid();
-    const date = new Date();
-    //addTodo(title, description)
-    dispatch({
-      type: TODO_ADD,
-      payload: {
-        title,
-        description,
-        date_created: date.toJSON(),
-        ident,
-        done: false,
-      },
-    });
-    dispatch({ type: HIDE_TODO_MODAL });
+    if (currentTitle === "") {
+      const title = titleRef.current.value;
+      const description = descRef.current.value;
+      const ident = uuid();
+      const date = new Date();
+      //addTodo(title, description)
+      dispatch({
+        type: TODO_ADD,
+        payload: {
+          title,
+          description,
+          date_created: date.toJSON(),
+          ident,
+          done: false,
+        },
+      });
+      dispatch({ type: HIDE_TODO_MODAL });
+      return;
+    } else {
+      const title = titleRef.current.value;
+      const description = descRef.current.value;
+      dispatch({
+        type: TODO_EDIT,
+        payload: {
+          title,
+          description,
+        },
+      });
+    }
   };
 
   return (
@@ -55,6 +73,7 @@ function AddTodoModal() {
                   Title
                 </label>
                 <input
+                  defaultValue={currentTitle}
                   ref={titleRef}
                   type="text"
                   id="todo-title"
@@ -66,6 +85,7 @@ function AddTodoModal() {
                   Description
                 </label>
                 <textarea
+                  defaultValue={currentDescription}
                   ref={descRef}
                   className="form-control"
                   id="todo-descripton"

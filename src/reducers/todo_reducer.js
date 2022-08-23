@@ -45,60 +45,78 @@ const initialState = {
     todoData: temp,
     _allTodoData: temp,
     todoModalVisible: false,
-    search: ''
+    search: '',
+    currentTitle: '',
+    currentDescription: 'aaa'
 }
 
 
-const updateWithVisible = (state)=>{
-    const foundTodos = state._allTodoData.filter((todo)=>{
+const updateWithVisible = (state) => {
+    const foundTodos = state._allTodoData.filter((todo) => {
         return todo.title.toLowerCase().includes(state.search.toLowerCase());
     }
     );
 
-    return {...state, todoData: foundTodos}
+    return { ...state, todoData: foundTodos }
 }
 
-export default function(state = initialState, action){
-    switch(action.type){
+export default function (state = initialState, action) {
+    switch (action.type) {
         case HIDE_TODO_MODAL:
             return {
-                ... state , todoModalVisible: false
+                ...state, todoModalVisible: false
             };
         case SHOW_TODO_MODAL:
+            console.log(action.payload.title)
             return {
-                ... state , todoModalVisible: true
+                ...state, todoModalVisible: true, currentTitle: action.payload.title, currentDescription: action.payload.description
             };
         case TODO_ADD:
             return updateWithVisible({
-                ... state, _allTodoData:[...state._allTodoData, action.payload]
+                ...state, _allTodoData: [...state._allTodoData, action.payload]
             });
         case TODO_DELETE:
-            const newTodos = state._allTodoData.filter(todo=> todo.ident !== action.payload)
+            const newTodos = state._allTodoData.filter(todo => todo.ident !== action.payload)
             return updateWithVisible({
-                ... state, _allTodoData: newTodos
+                ...state, _allTodoData: newTodos
             });
 
         case TODO_CHANGE_STATUS:
-            const changedTodos = state._allTodoData.map((todo)=>{
-                if(todo.ident !== action.payload.ident){
+            const changedTodos = state._allTodoData.map((todo) => {
+                if (todo.ident !== action.payload.ident) {
                     return todo;
                 }
-                return {...todo, done: action.payload.done}
-            }) 
+                return { ...todo, done: action.payload.done }
+            })
             return updateWithVisible({
-                ... state, _allTodoData: changedTodos
+                ...state, _allTodoData: changedTodos
             });
-        
+
         case TODO_CHANGE_SEARCH:
             return updateWithVisible({
                 ...state, search: action.payload
             })
-        
+
+        case TODO_EDIT:
+            const updatetTodos = state._allTodoData.map((todo) => {
+                if (todo.ident !== action.payload.ident) {
+                    return todo;
+                }
+                console.log(todo);
+                todo.description = action.payload.description;
+                todo.title = action.payload.title;
+                return todo;
+            });
+
+            return updateWithVisible({
+                state, _allTodoData: updatetTodos
+            })
+
         default:
             return state;
     }
 
-    
+
 
 
 }
