@@ -2,7 +2,7 @@ import { useState } from "react";
 import Card from "./Card";
 import AddTodoModal from "./modals/AddTodoModal";
 
-function HomePage({ isModalVisible, setModalVisible, todos, setTodos }) {
+function HomePage({ todos, setTodos }) {
   const addTodo = (title, descripton) => {
     setTodos([
       ...todos,
@@ -21,7 +21,7 @@ function HomePage({ isModalVisible, setModalVisible, todos, setTodos }) {
           <Card key={index} todo ={todo} />
         ))}
       </div>
-      <AddTodoModal visible={isModalVisible} setVisible={setModalVisible} addTodo={addTodo} />
+      <AddTodoModal addTodo={addTodo} />
     </>
   );
 }

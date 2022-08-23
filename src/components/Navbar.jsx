@@ -1,12 +1,18 @@
+import {SHOW_TODO_MODAL} from './../actions/types';
+import {useDispatch} from 'react-redux';
 
-function Navbar({openAddTodoModal}){
+
+
+function Navbar(){
+
+    const dispatch = useDispatch();
 
     return(
         <nav className="navbar navbar-light bg-light">
         <div className="container-fluid">
           <a className="navbar-brand">ToDo App</a>
           <form className="d-flex input-group w-auto">
-          <button type="button" className="btn btn-primary me-5" style={{height: "35.27px", borderRadius: 5}} onClick={openAddTodoModal}>
+          <button type="button" className="btn btn-primary me-5" style={{height: "35.27px", borderRadius: 5}} onClick={()=> dispatch({type: SHOW_TODO_MODAL})}>
           Add To DO
         </button>
             <input

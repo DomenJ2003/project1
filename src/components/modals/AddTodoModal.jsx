@@ -1,19 +1,26 @@
 import { useRef } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {HIDE_TODO_MODAL} from '../../actions/types';
+
 import "./modal.css";
 
-function AddTodoModal({ visible, setVisible, addTodo }) {
-  if (!visible) {
+function AddTodoModal({ addTodo }) {
+  
+  const isModelVisible = useSelector(state=> state.todo.todoModalVisible);
+  const titleRef = useRef(null);
+  const descRef = useRef(null);
+  const dispatch = useDispatch();
+  
+  if (!isModelVisible) {
     return <></>;
   }
 
-  const titleRef = useRef(null);
-  const descRef = useRef(null);
 
   const saveTodo = ()=>{
     const title = titleRef.current.value
     const description = descRef.current.value
     addTodo(title, description)
-    setVisible(false)
+    dispatch({type: HIDE_TODO_MODAL})
   }
 
 
@@ -29,7 +36,7 @@ function AddTodoModal({ visible, setVisible, addTodo }) {
                 className="btn-close"
                 data-mdb-dismiss="modal"
                 aria-label="Close"
-                onClick={() => setVisible(false)}
+                onClick={() =>  dispatch({type: HIDE_TODO_MODAL})}
               ></button>
             </div>
             <div className="modal-body">
