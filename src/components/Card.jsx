@@ -2,7 +2,6 @@ import {
   TODO_CHANGE_STATUS,
   TODO_DELETE,
   SHOW_TODO_MODAL,
-  TODO_EDIT,
 } from "../actions/types";
 import { useDispatch } from "react-redux";
 

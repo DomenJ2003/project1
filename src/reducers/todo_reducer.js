@@ -12,28 +12,28 @@ import {
 const temp = [
     {
         title: 'A',
-        description: 'žiga',
+        description: 'text...',
         ident: uuid(),
         date_created: (new Date()).toJSON(),
         done: false,
     },
     {
         title: 'ab',
-        description: 'žiga',
+        description: 'text...',
         ident: uuid(),
         date_created: (new Date()).toJSON(),
         done: false,
     },
     {
         title: 'b',
-        description: 'žiga',
+        description: 'text...',
         ident: uuid(),
         date_created: (new Date()).toJSON(),
         done: true,
     },
     {
         title: 'c',
-        description: 'žiga',
+        description: 'text...',
         ident: uuid(),
         date_created: (new Date()).toJSON(),
         done: false,
@@ -46,9 +46,9 @@ const initialState = {
     _allTodoData: temp,
     todoModalVisible: false,
     search: '',
-    currentTitle: '',
-    currentDescription: '',
-    currentIdent: '',
+    //currentTitle: '',
+    //currentDescription: '',
+    //currentIdent: '',
 }
 
 

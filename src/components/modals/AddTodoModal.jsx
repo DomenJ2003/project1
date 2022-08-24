@@ -27,7 +27,6 @@ function AddTodoModal() {
       const description = descRef.current.value;
       const ident = uuid();
       const date = new Date();
-      //addTodo(title, description)
       dispatch({
         type: TODO_ADD,
         payload: {
