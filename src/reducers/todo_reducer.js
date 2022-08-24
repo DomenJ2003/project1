@@ -12,33 +12,32 @@ import {
 const temp = [
     {
         title: 'A',
-        description: 'žiga',
+        description: 'dlasda',
         ident: uuid(),
         date_created: (new Date()).toJSON(),
         done: false,
     },
     {
         title: 'ab',
-        description: 'žiga',
+        description: 'dlasda',
         ident: uuid(),
         date_created: (new Date()).toJSON(),
         done: false,
     },
     {
         title: 'b',
-        description: 'žiga',
+        description: 'dlasda',
         ident: uuid(),
         date_created: (new Date()).toJSON(),
         done: true,
     },
     {
         title: 'c',
-        description: 'žiga',
+        description: 'dlasda',
         ident: uuid(),
         date_created: (new Date()).toJSON(),
         done: false,
     },
-
 ]
 
 const initialState = {
@@ -97,9 +96,4 @@ export default function(state = initialState, action){
         default:
             return state;
     }
-
-    
-
-
 }
-

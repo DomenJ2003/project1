@@ -1,11 +1,15 @@
 import {SHOW_TODO_MODAL, TODO_CHANGE_SEARCH} from './../actions/types';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import {useEffect, useRef} from 'react'
 
 
 
 function Navbar(){
 
     const dispatch = useDispatch();
+    const searchInput = useSelector(state=> state.todo.search);
+    const searchRef= useRef(null)
+
     const updateSearch = (event)=>{
       event.preventDefault();
       dispatch({
@@ -13,6 +17,10 @@ function Navbar(){
         payload: event.target.value
       });
     }
+
+    useEffect(()=>{
+      searchRef.current.value = searchInput;
+    },[])
 
     return(
         <nav className="navbar navbar-light bg-light">
@@ -23,6 +31,7 @@ function Navbar(){
           Add To DO
         </button>
             <input
+              ref={searchRef}
               onChange={
                 (e)=>{
                   updateSearch(e)
