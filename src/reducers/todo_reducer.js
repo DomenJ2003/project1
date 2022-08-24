@@ -9,41 +9,11 @@ import {
     TODO_CHANGE_SEARCH,
 } from './../actions/types';
 
-const temp = [
-    {
-        title: 'A',
-        description: 'text...',
-        ident: uuid(),
-        date_created: (new Date()).toJSON(),
-        done: false,
-    },
-    {
-        title: 'ab',
-        description: 'text...',
-        ident: uuid(),
-        date_created: (new Date()).toJSON(),
-        done: false,
-    },
-    {
-        title: 'b',
-        description: 'text...',
-        ident: uuid(),
-        date_created: (new Date()).toJSON(),
-        done: true,
-    },
-    {
-        title: 'c',
-        description: 'text...',
-        ident: uuid(),
-        date_created: (new Date()).toJSON(),
-        done: false,
-    },
 
-]
 
 const initialState = {
-    todoData: temp,
-    _allTodoData: temp,
+    todoData: [],
+    _allTodoData: [],
     todoModalVisible: false,
     search: '',
     //currentTitle: '',
