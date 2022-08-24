@@ -54,7 +54,8 @@ const initialState = {
 
 const updateWithVisible = (state) => {
     const foundTodos = state._allTodoData.filter((todo) => {
-        return todo.title.toLowerCase().includes(state.search.toLowerCase());
+
+        return todo.title.includes(state.search.toLowerCase());
     }
     );
 
@@ -68,7 +69,7 @@ export default function (state = initialState, action) {
                 ...state, todoModalVisible: false
             };
         case SHOW_TODO_MODAL:
-            console.log(action.payload.title)
+
             return {
                 ...state, todoModalVisible: true, currentTitle: action.payload.title, currentDescription: action.payload.description, currentIdent: action.payload.ident
             };
@@ -101,18 +102,16 @@ export default function (state = initialState, action) {
         case TODO_EDIT:
             const updatetTodos = state._allTodoData.map((todo) => {
                 if (todo.ident !== action.payload.ident) {
-
                     return todo;
                 }
-                let newTodo = Object.assign({}, todo);
-
-                newTodo.description = action.payload.description;
-                newTodo.title = action.payload.title;
-                debugger;
-                return { newTodo };
+                todo.description = action.payload.description;
+                todo.title = action.payload.title;
+                return todo;
             });
-            console.log(updatetTodos);
-            return;
+
+            return updateWithVisible({
+                ...state, _allTodoData: updatetTodos
+            });
 
 
 

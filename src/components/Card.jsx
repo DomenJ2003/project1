@@ -71,7 +71,6 @@ function Card({ todo }) {
             role="button"
             data-ripple-color="primary"
             onClick={() => {
-              console.log(todo.title);
               dispatch({
                 type: SHOW_TODO_MODAL,
                 payload: {

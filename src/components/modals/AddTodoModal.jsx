@@ -38,8 +38,6 @@ function AddTodoModal() {
           done: false,
         },
       });
-      dispatch({ type: HIDE_TODO_MODAL });
-      return;
     } else {
       const title = titleRef.current.value;
       const description = descRef.current.value;
@@ -52,6 +50,8 @@ function AddTodoModal() {
         },
       });
     }
+    dispatch({ type: HIDE_TODO_MODAL });
+    return;
   };
 
   return (
