@@ -113,14 +113,9 @@ export default function (state = initialState, action) {
                 ...state, _allTodoData: updatetTodos
             });
 
-
-
         default:
             return state;
     }
-
-
-
 
 }
 
