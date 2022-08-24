@@ -55,7 +55,8 @@ const initialState = {
 const updateWithVisible = (state) => {
     const foundTodos = state._allTodoData.filter((todo) => {
 
-        return todo.title.includes(state.search.toLowerCase());
+
+        return todo.title.toLowerCase().includes(state.search.toLowerCase());
     }
     );
 
