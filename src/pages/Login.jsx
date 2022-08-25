@@ -1,9 +1,44 @@
 import { useRef } from "react";
+import { useDispatch } from "react-redux";
+import axios from "axios";
+import { apiBase, BASE } from "../utils";
+import { useNavigate } from "react-router-dom";
+import {
+  USER_LOGIN_FAILURE,
+  USER_LOGIN_START,
+  USER_LOGIN_SUCCESS,
+} from "../actions/types";
 
 import "./authform.css";
 function login() {
-  const usernameRef = useRef(null);
+  const emailRef = useRef(null);
   const passwordRef = useRef(null);
+  const dispach = useDispatch();
+  const navigate = useNavigate();
+
+  const loginAction = () => {
+    const user = {
+      email: emailRef.current.value,
+      password: passwordRef.current.value,
+    };
+
+    dispach({ type: USER_LOGIN_START });
+    axios
+      .post(apiBase + "login", user)
+      .then(function (response) {
+        console.log(response);
+        if (response.data.success) {
+          dispach({ type: USER_LOGIN_SUCCESS, payload: response.data });
+          navigate(BASE);
+        } else {
+          alert(response.data.msg);
+          dispach({ type: USER_LOGIN_FAILURE });
+        }
+      })
+      .catch(function (error) {
+        dispach({ type: USER_LOGIN_FAILURE });
+      });
+  };
 
   return (
     <div className="card my-form-card">
@@ -15,7 +50,7 @@ function login() {
               Email
             </label>
             <input
-              ref={usernameRef}
+              ref={emailRef}
               type="email"
               id="email"
               className="form-control"
@@ -33,7 +68,7 @@ function login() {
             />
           </div>
         </div>
-        <button type="button" className="btn btn-primary">
+        <button type="button" className="btn btn-primary" onClick={loginAction}>
           Button
         </button>
       </div>

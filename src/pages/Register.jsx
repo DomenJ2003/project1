@@ -5,7 +5,8 @@ import {
   USER_REGISTER_START,
   USER_REGISTER_SUCCESS,
 } from "../actions/types";
-import { apiBase } from "../utils";
+import { apiBase, BASE } from "../utils";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./authform.css";
 
@@ -29,6 +30,7 @@ function Register() {
         console.log(response);
         //console.log(response.data.jwt);
         dispach({ type: USER_REGISTER_SUCCESS, payload: response.data });
+        navigate(BASE);
       })
       .catch(function (error) {
         dispach({ type: USER_LOGOUT });
