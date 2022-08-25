@@ -1,10 +1,40 @@
 import { useRef } from "react";
-
+import { useDispatch } from "react-redux";
+import {
+  USER_LOGOUT,
+  USER_REGISTER_START,
+  USER_REGISTER_SUCCESS,
+} from "../actions/types";
+import { apiBase } from "../utils";
+import axios from "axios";
 import "./authform.css";
+
 function Register() {
-  const usernameRef = useRef(null);
+  const emailRef = useRef(null);
   const nameRef = useRef(null);
   const passwordRef = useRef(null);
+  const dispach = useDispatch();
+
+  const registerAction = () => {
+    const user = {
+      name: nameRef.current.value,
+      email: emailRef.current.value,
+      password: passwordRef.current.value,
+    };
+
+    dispach({ type: USER_REGISTER_START });
+    axios
+      .post(apiBase + "register", user)
+      .then(function (response) {
+        console.log(response);
+        //console.log(response.data.jwt);
+        dispach({ type: USER_REGISTER_SUCCESS, payload: response.data });
+      })
+      .catch(function (error) {
+        dispach({ type: USER_LOGOUT });
+        console.log(error);
+      });
+  };
 
   return (
     <div className="card my-form-card">
@@ -27,7 +57,7 @@ function Register() {
               Email
             </label>
             <input
-              ref={usernameRef}
+              ref={emailRef}
               type="email"
               id="email"
               className="form-control"
@@ -45,8 +75,12 @@ function Register() {
             />
           </div>
         </div>
-        <button type="button" className="btn btn-primary">
-          Button
+        <button
+          type="button"
+          className="btn btn-primary"
+          onClick={registerAction}
+        >
+          Register
         </button>
       </div>
     </div>

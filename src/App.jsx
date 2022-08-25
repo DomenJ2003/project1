@@ -8,20 +8,16 @@ import Register from "./pages/Register";
 import PublicNavbar from "./components/PublicNavbar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { BASE } from "./utils";
+import { useSelector } from "react-redux";
 
 function App() {
-  // return (
-  //   <div className="App">
-  //     <PublicNavbar />
-  //     <div className="main-container">
-  //       <HomePage />
-  //     </div>
-  //   </div>
-  // );
+  const isAuth = useSelector((user) => {
+    return !!user.user.jwt;
+  });
 
   return (
     <BrowserRouter>
-      <PublicNavbar />
+      {isAuth ? <Navbar /> : <PublicNavbar />}
       <div className="main-container">
         <Routes>
           <Route path={BASE} element={<HomePage />} />
