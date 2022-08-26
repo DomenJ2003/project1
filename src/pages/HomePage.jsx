@@ -1,10 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Card from "../components/Card";
-import AddTodoModal from "../components/modals/AddTodoModal";
+
 import { useSelector } from "react-redux";
+import axios from "axios";
+import { apiBase } from "../utils";
 
 function HomePage() {
   const todos = useSelector((state) => state.todo.todoData);
+  useEffect(() => {
+    axios.get(apiBase + "users").then(function (response) {
+      console.log(response);
+    });
+  }, []);
 
   return (
     <>
@@ -13,7 +20,6 @@ function HomePage() {
           <Card key={todo.ident} todo={todo} />
         ))}
       </div>
-      <AddTodoModal />
     </>
   );
 }
