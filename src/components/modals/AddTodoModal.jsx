@@ -7,6 +7,9 @@ import {
   ADD_POST_FAILURE,
   ADD_POST_SUCCESS,
   ADD_POST_START,
+  GET_POSTS_SUCCESS,
+  GET_POSTS_START,
+  GET_PROFILE_FAILURE,
 } from "../../actions/types";
 import "./modal.css";
 
@@ -69,6 +72,17 @@ function AddTodoModal() {
       .then(function (response) {
         dispatch({ type: ADD_POST_SUCCESS });
         dispatch({ type: HIDE_POST_MODAL });
+        dispatch({ type: GET_POSTS_START });
+        axios
+          .get(API_BASE + "posts")
+          .then(function (response) {
+            console.log(response);
+            dispatch({ type: GET_POSTS_SUCCESS, payload: response.data.posts });
+          })
+          .catch((err) => {
+            alert("napaka");
+            dispatch({ type: GET_POSTS_FAILURE });
+          });
       })
       .catch(function (error) {
         alert("napaka");
