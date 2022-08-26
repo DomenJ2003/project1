@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import {
+  GET_PROFILE_START,
   GET_PROFILE_SUCCESS,
   GET_PROFILE_FAILURE,
-  GET_PROFILE_START,
 } from "../actions/types";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
@@ -13,6 +13,7 @@ function Profile() {
   const dispatch = useDispatch();
   const jwt = useSelector((state) => state.user.jwt);
   const profileData = useSelector((state) => state.post.profileData);
+  console.log(profileData);
   const config = {
     headers: {
       Authorization: "Bearer " + jwt,
@@ -24,10 +25,10 @@ function Profile() {
     axios
       .get(API_BASE + "profile", config)
       .then(function (response) {
-        console.log(response);
         dispatch({ type: GET_PROFILE_SUCCESS, payload: response.data });
+        console.log(response);
       })
-      .catch((err) => {
+      .catch((error) => {
         alert("napaka");
         dispatch({ type: GET_PROFILE_FAILURE });
       });
@@ -35,9 +36,24 @@ function Profile() {
 
   return (
     <>
-      {profileData?.posts?.map((post) => {
-        return <Card key={post.id} {...post} />;
-      })}
+      {profileData?.profile ? (
+        <div className="card" style={{ marginBottom: 15 }}>
+          <ul className="list-group list-group-light">
+            <li className="list-group-item px-3">
+              Name: <b>{profileData.profile.name}</b>
+            </li>
+            <li className="list-group-item px-3">
+              Email: <b>{profileData.profile.email}</b>
+            </li>
+          </ul>
+        </div>
+      ) : null}
+
+      <div className="row">
+        {profileData?.posts?.map((post) => (
+          <Card key={post.id} {...post} />
+        ))}
+      </div>
     </>
   );
 }

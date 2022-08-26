@@ -4,7 +4,6 @@ import axios from "axios";
 import { API_BASE } from "../../utils";
 import {
   HIDE_POST_MODAL,
-  TODO_ADD,
   ADD_POST_FAILURE,
   ADD_POST_SUCCESS,
   ADD_POST_START,
