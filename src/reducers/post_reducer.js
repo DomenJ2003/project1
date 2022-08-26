@@ -8,6 +8,9 @@ import {
   ADD_POST_START,
   HIDE_POST_MODAL,
   SHOW_POST_MODAL,
+  GET_PROFILE_START,
+  GET_PROFILE_SUCCESS,
+  GET_PROFILE_FAILURE,
 } from "./../actions/types";
 
 const initialState = {
@@ -16,6 +19,7 @@ const initialState = {
   todoModalVisible: false,
   loading: false,
   search: "",
+  profileData: {},
 };
 
 const updateWithVisible = (state) => {
@@ -37,6 +41,25 @@ export default function (state = initialState, action) {
       return { ...state, loading: true };
     case ADD_POST_SUCCESS:
     case ADD_POST_FAILURE:
+      return { ...state, loading: false };
+
+    case GET_POSTS_START:
+      return { ...state, loading: true, _allPosts: [], posts: [] };
+    case GET_POSTS_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        _allPosts: action.payload,
+        posts: action.payload,
+      };
+    case GET_POSTS_FAILURE:
+      return { ...state, loading: false, _allPosts: [], posts: [] };
+
+    case GET_PROFILE_START:
+      return { ...state, loading: true, profileData: {} };
+    case GET_PROFILE_SUCCESS:
+      return { ...state, loading: false, profileData: action.payload };
+    case GET_PROFILE_FAILURE:
       return { ...state, loading: false };
     //case TODO_CHANGE_SEARCH:
     //    return updateWithVisible({ ...state, search: action.payload });

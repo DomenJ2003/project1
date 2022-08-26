@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { useDispatch } from "react-redux";
 import axios from "axios";
-import { apiBase, BASE } from "../utils";
+import { API_BASE, BASE } from "../utils";
 import { useNavigate } from "react-router-dom";
 import {
   USER_LOGIN_FAILURE,
@@ -24,7 +24,7 @@ function login() {
 
     dispach({ type: USER_LOGIN_START });
     axios
-      .post(apiBase + "login", user)
+      .post(API_BASE + "login", user)
       .then(function (response) {
         console.log(response);
         if (response.data.success) {

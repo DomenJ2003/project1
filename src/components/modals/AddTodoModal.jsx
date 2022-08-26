@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
-import { apiBase } from "../../utils";
+import { API_BASE } from "../../utils";
 import {
   HIDE_POST_MODAL,
   TODO_ADD,
@@ -66,7 +66,7 @@ function AddTodoModal() {
 
     dispatch({ type: ADD_POST_START });
     axios
-      .post(apiBase + "create/post", post, config)
+      .post(API_BASE + "create/post", post, config)
       .then(function (response) {
         dispatch({ type: ADD_POST_SUCCESS });
         dispatch({ type: HIDE_POST_MODAL });
@@ -74,6 +74,7 @@ function AddTodoModal() {
       .catch(function (error) {
         alert("napaka");
         dispatch({ type: ADD_POST_FAILURE });
+        dispatch({ type: HIDE_POST_MODAL });
       });
   };
 

@@ -10,4 +10,4 @@ export { uuid };
 
 export const BASE = "/project1/";
 
-export const apiBase = "http://localhost:5000/api/v1/";
+export const API_BASE = "http://localhost:5000/api/v1/";

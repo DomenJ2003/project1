@@ -5,7 +5,7 @@ import {
   USER_REGISTER_START,
   USER_REGISTER_SUCCESS,
 } from "../actions/types";
-import { apiBase, BASE } from "../utils";
+import { API_BASE, BASE } from "../utils";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./authform.css";
@@ -25,7 +25,7 @@ function Register() {
 
     dispach({ type: USER_REGISTER_START });
     axios
-      .post(apiBase + "register", user)
+      .post(API_BASE + "register", user)
       .then(function (response) {
         console.log(response);
         //console.log(response.data.jwt);
