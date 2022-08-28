@@ -73,6 +73,6 @@ export default function (state = initialState, action) {
     case COUNT_POSTS_SUCCESS:
       return { ...state, loading: false, posts_count: action.payload.data }
     default:
-      return { ...initialState };
+      return { ...state };
   }
 }

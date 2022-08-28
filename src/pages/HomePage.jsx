@@ -12,8 +12,8 @@ import {
 } from "../actions/types";
 
 function HomePage() {
-  const posts = useSelector((state) => state.post.posts);
   const dispatch = useDispatch();
+  const posts = useSelector((state) => state.post.posts);
   useEffect(() => {
     dispatch({ type: GET_POSTS_START });
     axios
@@ -39,7 +39,11 @@ function HomePage() {
     <>
       <div className="row">
         {posts.map((post, index) => (
-          <Card key={index} {...posts[posts.length - (index + 1)]} />
+          <Card
+            key={index}
+            {...posts[posts.length - (index + 1)]}
+            profile={true}
+          />
         ))}
       </div>
     </>

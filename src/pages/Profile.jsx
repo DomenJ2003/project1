@@ -14,6 +14,7 @@ function Profile() {
   const dispatch = useDispatch();
   const jwt = useSelector((state) => state.user.jwt);
   const profileData = useSelector((state) => state.post.profileData);
+  const posts = useSelector((state) => state.post.posts);
   const config = {
     headers: {
       Authorization: "Bearer " + jwt,
@@ -63,9 +64,13 @@ function Profile() {
       ) : null}
 
       <div className="row">
-        {profileData?.posts?.map((post) => (
-          <Card key={post.id} {...post} />
-        ))}
+        {posts.map((post) => {
+          if (post.user_id === profileData?.profile?.id) {
+            console.log("ok");
+            return <Card key={post.id} {...post} profile={true} />;
+          }
+          return <div key={post.id}></div>;
+        })}
       </div>
     </>
   );
