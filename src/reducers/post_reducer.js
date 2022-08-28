@@ -12,6 +12,8 @@ import {
   GET_PROFILE_SUCCESS,
   GET_PROFILE_FAILURE,
   POST_CHANGE_SEARCH,
+  COUNT_POSTS_START,
+  COUNT_POSTS_SUCCESS,
 } from "./../actions/types";
 
 const initialState = {
@@ -21,6 +23,7 @@ const initialState = {
   loading: false,
   search: "",
   profileData: {},
+  posts_count: []
 };
 
 const updateWithVisible = (state) => {
@@ -64,6 +67,11 @@ export default function (state = initialState, action) {
       return { ...state, loading: false };
     case POST_CHANGE_SEARCH:
       return updateWithVisible({ ...state, search: action.payload });
+
+    case COUNT_POSTS_START:
+      return { ...state, loading: true }
+    case COUNT_POSTS_SUCCESS:
+      return { ...state, loading: false, posts_count: action.payload.data }
     default:
       return { ...initialState };
   }

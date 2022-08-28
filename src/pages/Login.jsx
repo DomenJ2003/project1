@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 import axios from "axios";
 import { API_BASE, BASE } from "../utils";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import {
   USER_LOGIN_FAILURE,
   USER_LOGIN_START,
@@ -26,12 +28,29 @@ function login() {
     axios
       .post(API_BASE + "login", user)
       .then(function (response) {
-        console.log(response);
         if (response.data.success) {
+          toast.success("successfully login", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+          });
           dispach({ type: USER_LOGIN_SUCCESS, payload: response.data });
           navigate(BASE);
         } else {
-          alert(response.data.msg);
+          toast.error(response.data.msg, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+          });
+
           dispach({ type: USER_LOGIN_FAILURE });
         }
       })

@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { BASE } from "../utils";
+import { toast } from "react-toastify";
 
 function Navbar() {
   const navigate = useNavigate();
@@ -33,6 +34,12 @@ function Navbar() {
           className="navbar-brand"
           onClick={() => navigate(BASE)}
         >
+          <img
+            src="./icon.png"
+            alt=""
+            height={24}
+            style={{ paddingRight: "5px" }}
+          />
           Blog App
         </a>
         <form className="d-flex input-group w-auto">
@@ -94,6 +101,26 @@ function Navbar() {
                   className="dropdown-item"
                   href="#"
                   onClick={() => {
+                    navigate(BASE + "dashboard");
+                  }}
+                >
+                  Dashboard
+                </a>
+              </li>
+              <li>
+                <a
+                  className="dropdown-item"
+                  href="#"
+                  onClick={() => {
+                    toast.info("Logout", {
+                      position: "top-right",
+                      autoClose: 5000,
+                      hideProgressBar: false,
+                      closeOnClick: true,
+                      pauseOnHover: false,
+                      draggable: true,
+                      progress: undefined,
+                    });
                     dispatch({ type: USER_LOGOUT });
                     navigate(BASE);
                   }}

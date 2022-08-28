@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import Card from "../components/Card";
 
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
+import { toast } from "react-toastify";
 import { API_BASE } from "../utils";
 import {
   GET_POSTS_FAILURE,
@@ -18,11 +19,18 @@ function HomePage() {
     axios
       .get(API_BASE + "posts")
       .then(function (response) {
-        console.log(response);
         dispatch({ type: GET_POSTS_SUCCESS, payload: response.data.posts });
       })
       .catch((err) => {
-        alert("napaka");
+        toast.error("napaka", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+        });
         dispatch({ type: GET_POSTS_FAILURE });
       });
   }, []);
@@ -31,7 +39,7 @@ function HomePage() {
     <>
       <div className="row">
         {posts.map((post, index) => (
-          <Card key={index} {...post} />
+          <Card key={index} {...posts[posts.length - (index + 1)]} />
         ))}
       </div>
     </>

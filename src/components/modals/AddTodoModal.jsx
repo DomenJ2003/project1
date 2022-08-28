@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
+import { toast } from "react-toastify";
 import { API_BASE } from "../../utils";
 import {
   HIDE_POST_MODAL,
@@ -9,7 +10,6 @@ import {
   ADD_POST_START,
   GET_POSTS_SUCCESS,
   GET_POSTS_START,
-  GET_PROFILE_FAILURE,
 } from "../../actions/types";
 import "./modal.css";
 
@@ -76,16 +76,40 @@ function AddTodoModal() {
         axios
           .get(API_BASE + "posts")
           .then(function (response) {
-            console.log(response);
             dispatch({ type: GET_POSTS_SUCCESS, payload: response.data.posts });
+            toast.success("new post created", {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: false,
+              draggable: true,
+              progress: undefined,
+            });
           })
           .catch((err) => {
-            alert("napaka");
+            toast.error("napaka", {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: false,
+              draggable: true,
+              progress: undefined,
+            });
             dispatch({ type: GET_POSTS_FAILURE });
           });
       })
       .catch(function (error) {
-        alert("napaka");
+        toast.error("napaka", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+        });
         dispatch({ type: ADD_POST_FAILURE });
         dispatch({ type: HIDE_POST_MODAL });
       });

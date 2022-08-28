@@ -8,12 +8,12 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { API_BASE } from "../utils";
 import Card from "../components/Card";
+import { toast } from "react-toastify";
 
 function Profile() {
   const dispatch = useDispatch();
   const jwt = useSelector((state) => state.user.jwt);
   const profileData = useSelector((state) => state.post.profileData);
-  console.log(profileData);
   const config = {
     headers: {
       Authorization: "Bearer " + jwt,
@@ -26,10 +26,17 @@ function Profile() {
       .get(API_BASE + "profile", config)
       .then(function (response) {
         dispatch({ type: GET_PROFILE_SUCCESS, payload: response.data });
-        console.log(response);
       })
       .catch((error) => {
-        alert("napaka");
+        toast.error("napaka", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: true,
+          progress: undefined,
+        });
         dispatch({ type: GET_PROFILE_FAILURE });
       });
   }, []);
@@ -44,6 +51,12 @@ function Profile() {
             </li>
             <li className="list-group-item px-3">
               Email: <b>{profileData.profile.email}</b>
+            </li>
+            <li className="list-group-item px-3">
+              Number of posts: <b>{profileData.posts.length}</b>
+            </li>
+            <li className="list-group-item px-3">
+              Joined at: <b>{profileData.profile.date_c}</b>
             </li>
           </ul>
         </div>
