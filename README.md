@@ -1,2 +1,3 @@
-# project1
- Poletna šola programiranja projekt 1
+# Blog App
+
+My first project with react+vite and redux for simple blog app with locale databese SQLlite.
